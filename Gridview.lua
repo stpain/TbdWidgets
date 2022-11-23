@@ -31,7 +31,7 @@ function TbdWidgetsGridviewMixin:OnLoad()
 end
 
 function TbdWidgetsGridviewMixin:InitFramePool(type, template)
-    self.framePool = CreateFramePool(type, self, template);
+    self.framePool = CreateFramePool(type, self.scrollChild, template);
 end
 
 function TbdWidgetsGridviewMixin:SetMinMaxSize(min, max)
@@ -120,6 +120,9 @@ function TbdWidgetsGridviewMixin:UpdateLayout()
 
     self.colIndex = 0;
     self.rowIndex = 0;
+
+    self.scrollChild:SetHeight(self:GetHeight())
+    self.scrollChild:SetWidth(self:GetWidth())
 
     for k, f in ipairs(self.frames) do
         f:ClearAllPoints()
