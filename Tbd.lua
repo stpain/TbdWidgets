@@ -1,6 +1,6 @@
 
 
-local addonName, widgets = ...;
+local addonName, addon = ...;
 
 TbdWidgetsMixin = {}
 function TbdWidgetsMixin:OnLoad()

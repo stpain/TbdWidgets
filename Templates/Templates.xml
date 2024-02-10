@@ -1,0 +1,125 @@
+<Ui>
+
+    <Frame name="TBDBaseTooltipFrame" mixin="TBDBaseTooltipMixin" virtual="true">
+        <Scripts>
+            <OnEnter method="OnEnter"/>
+            <OnLeave>
+                GameTooltip_SetDefaultAnchor(GameTooltip, UIParent)
+            </OnLeave>
+        </Scripts>
+    </Frame>
+    <Button name="TBDBaseTooltipButton" mixin="TBDBaseTooltipMixin" virtual="true">
+        <Scripts>
+            <OnEnter method="OnEnter"/>
+            <OnLeave>
+                GameTooltip_SetDefaultAnchor(GameTooltip, UIParent)
+            </OnLeave>
+        </Scripts>
+    </Button>
+
+    <Button name="TBDSquareSlotButton" inherits="TBDBaseTooltipButton" virtual="true">
+		<Size x="34" y="34"/>
+        <NormalTexture atlas="WoWShare-AddButton-Up"/>
+        <PushedTexture atlas="WoWShare-AddButton-Down"/>
+        <HighlightTexture atlas="WoWShare-Highlight"/>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture parentKey="icon">
+					<Size x="30" y="30"/>
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+    </Button>
+
+    <Button name="TBDSlotFlyoutButton" virtual="true">
+        <NormalTexture file="Interface\PaperDollInfoFrame\UI-GearManager-FlyoutButton"/>
+    </Button>
+
+    <Frame name="TBDSimpleIconLabelFrame" mixin="TBDSimpleIconLabelFrameMixin" virtual="true">
+        <Layers>
+            <Layer level="HIGHLIGHT">
+                <Texture parentKey="highlight" atlas="search-highlight" setAllPoints="true">
+
+                </Texture>
+            </Layer>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="selected" atlas="search-select" hidden="true" setAllPoints="true">
+
+                </Texture>
+				<Texture parentKey="background" alpha="0.0">	
+                    <Color r="0" g="0" b="0"/>			
+					<Anchors>
+						<Anchor point="TOPLEFT" x="1" y="0"/>
+						<Anchor point="BOTTOMRIGHT" x="0" y="1"/>
+					</Anchors>
+				</Texture>
+				<Texture parentKey="icon">
+					<Size x="32" y="32"/>				
+					<Anchors>
+						<Anchor point="LEFT" x="5" y="0"/>
+					</Anchors>
+				</Texture>
+                <MaskTexture parentKey="mask" file="Interface/CHARACTERFRAME/TempPortraitAlphaMask" hWrapMode="CLAMPTOBLACKADDITIVE" vWrapMode="CLAMPTOBLACKADDITIVE" hidden="true">
+                    <Size x="30" y="30"/>	
+                    <Anchors>
+                        <Anchor point="LEFT" x="5" y="0"/>
+                    </Anchors>
+                    <MaskedTextures>
+                        <MaskedTexture childKey="icon"/>
+                    </MaskedTextures>
+                </MaskTexture>
+				<Texture parentKey="iconRight">
+					<Size x="32" y="32"/>				
+					<Anchors>
+						<Anchor point="RIGHT" x="-5" y="0"/>
+					</Anchors>
+				</Texture>
+                <MaskTexture parentKey="maskRight" file="Interface/CHARACTERFRAME/TempPortraitAlphaMask" hWrapMode="CLAMPTOBLACKADDITIVE" vWrapMode="CLAMPTOBLACKADDITIVE" hidden="true">
+                    <Size x="30" y="30"/>	
+                    <Anchors>
+                        <Anchor point="RIGHT" x="-5" y="0"/>
+                    </Anchors>
+                    <MaskedTextures>
+                        <MaskedTexture childKey="iconRight"/>
+                    </MaskedTextures>
+                </MaskTexture>
+                <FontString parentKey="label" inherits="GameFontWhite" justifyH="LEFT">
+                    <Anchors>
+                        <Anchor point="LEFT" relativePoint="RIGHT" relativeKey="$parent.icon" x="6" y="0"/>
+                    </Anchors>
+                </FontString>
+                <FontString parentKey="labelRight" inherits="GameFontWhite" justifyH="RIGHT">
+                    <Anchors>
+                        <Anchor point="RIGHT" x="-1" y="0"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Frames>
+            <Button parentKey="rightButton" hidden="true">
+                <Anchors>
+                    <Anchor point="RIGHT" x="-1" y="0"/>
+                </Anchors>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <Texture parentKey="icon" setAllPoints="true"/>
+                    </Layer>
+                </Layers>
+            </Button>
+        </Frames>
+        <Animations>
+            <AnimationGroup parentKey="anim" setToFinalAlpha="true">
+                <Alpha parentKey="fadeIn" duration="0.3" fromAlpha="0" toAlpha="1"/>
+            </AnimationGroup>
+        </Animations>
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+        </Scripts>
+    </Frame>
+
+
+
+</Ui>

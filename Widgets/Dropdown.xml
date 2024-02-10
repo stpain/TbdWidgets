@@ -17,7 +17,6 @@
                 </Texture>
             </Layer>
             <Layer level="OVERLAY">
-
                 <FontString parentKey="text" inherits="GameFontNormal" justifyH="LEFT">
                     <Color r="1" g="1" b="1"/>
                     <Anchors>
@@ -49,7 +48,7 @@
                 </Layers>
             </Frame>
             <Frame parentKey="flyout" frameLevel="7" frameStrata="DIALOG" hidden="true">
-                <Size x="1" y="230"/>
+                <Size x="140" y="230"/>
                 <Anchors>
                     <Anchor point="TOP" relativePoint="BOTTOM" x="0" y="3"/>
                     <!-- <Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" x="10" y="5"/> -->

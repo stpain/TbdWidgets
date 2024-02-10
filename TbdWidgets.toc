@@ -1,0 +1,26 @@
+## Name: TBD-Widgets
+## Version: 0.2
+## Interface: 100200
+## Notes: UI templates for use in TBD addons
+## SavedVariables: TbdAccount
+
+Widgets\Listview.lua
+Widgets\Listview.xml
+Widgets\Gridview.lua
+Widgets\Gridview.xml
+Widgets\Dropdown.lua
+Widgets\Dropdown.xml
+Widgets\Checkbox.xml
+Widgets\ScrollFrame.lua
+Widgets\ScrollFrame.xml
+Widgets\Slider.xml
+Widgets\Helptips.lua
+Widgets\Helptips.xml
+Widgets\TabFrame.lua
+Widgets\TabFrame.xml
+
+Templates\Templates.lua
+Templates\Templates.xml
+
+Tbd.lua
+Tbd.xml

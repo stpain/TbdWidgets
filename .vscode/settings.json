@@ -1,0 +1,17 @@
+{
+    "Lua.diagnostics.globals": [
+        "GameFontWhite",
+        "GameTooltip_SetDefaultAnchor",
+        "NineSliceUtil",
+        "CreateFramePool",
+        "NEXT",
+        "ScrollUtil",
+        "CreateDataProvider",
+        "CreateScrollBoxListLinearView",
+        "GenerateClosure",
+        "CreateScrollBoxListTreeListView",
+        "CreateAnchor",
+        "CreateRadioButtonGroup",
+        "ButtonGroupBaseMixin"
+    ]
+}
