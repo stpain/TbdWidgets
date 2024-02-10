@@ -1,0 +1,5 @@
+<Ui>
+    <Frame name="TBDTabFrameTemplate" mixin="TBDTabFrameMixin" virtual="true">
+
+    </Frame>
+</Ui>

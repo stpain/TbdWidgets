@@ -1,0 +1,7 @@
+<Ui>
+    <Frame name="TbdWidgetsUI" mixin="TbdWidgetsMixin" parent="UIParent">
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+        </Scripts>
+    </Frame>
+</Ui>
