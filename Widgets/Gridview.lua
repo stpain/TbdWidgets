@@ -95,7 +95,9 @@ function TBDGridviewMixin:RemoveFrame(frame)
 end
 
 function TBDGridviewMixin:InsertTable(tbl)
-
+    for k, v in ipairs(tbl) do
+        self:Insert(v)
+    end
 end
 
 function TBDGridviewMixin:Flush()

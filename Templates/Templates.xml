@@ -34,6 +34,64 @@
 		</Layers>
     </Button>
 
+    <Button name="TBDCircleButtonTemplate" mixin="TBDCircleButtonMixin" virtual="true" enableMouse="true">
+        <Layers>
+            <!-- <Layer level="HIGHLIGHT">
+                <Texture parentKey="border" atlas="Artifacts-PerkRing-Highlight">
+                    <Size x="80" y="80"/>
+                    <Anchors>
+                        <Anchor point="CENTER" x="0" y="10"/>
+                    </Anchors>
+                </Texture>
+            </Layer> -->
+            <Layer level="BORDER">
+                <Texture parentKey="selected" atlas="charactercreate-ring-select" hidden="true">
+                    <Size x="100" y="100"/>
+                    <Anchors>
+                        <Anchor point="CENTER" x="0" y="10"/>
+                    </Anchors>
+                </Texture>
+            </Layer>
+            <Layer level="BORDER">
+                <Texture parentKey="border" atlas="charactercreate-ring-metallight">
+                    <Size x="100" y="100"/>
+                    <Anchors>
+                        <Anchor point="CENTER" x="0" y="10"/>
+                    </Anchors>
+                </Texture>
+            </Layer>
+            <Layer level="ARTWORK">
+				<Texture parentKey="icon">
+                    <Size x="60" y="60"/>
+                    <Anchors>
+                        <Anchor point="CENTER" x="0" y="10"/>					
+                    </Anchors>
+                </Texture>
+                <MaskTexture parentKey="mask" file="Interface/CHARACTERFRAME/TempPortraitAlphaMask" hWrapMode="CLAMPTOBLACKADDITIVE" vWrapMode="CLAMPTOBLACKADDITIVE">
+                    <Size x="50" y="50"/>
+                    <Anchors>
+                        <Anchor point="CENTER" x="0" y="10"/>                    
+                    </Anchors>
+                    <MaskedTextures>
+                        <MaskedTexture childKey="icon"/>
+                    </MaskedTextures>
+                </MaskTexture>
+            </Layer>
+            <Layer level="OVERLAY">
+                <FontString parentKey="label" inherits="GameFontWhite" wordwrap="true" justifyV="MIDDLE">
+                    <Size y="26"/>
+                    <Anchors>
+                        <Anchor point="BOTTOMLEFT" x="-2" y="-6"/>
+                        <Anchor point="BOTTOMRIGHT" x="2" y="-6"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+        </Scripts>
+    </Button>
+
     <Button name="TBDSlotFlyoutButton" virtual="true">
         <NormalTexture file="Interface\PaperDollInfoFrame\UI-GearManager-FlyoutButton"/>
     </Button>
@@ -42,6 +100,11 @@
         <Layers>
             <Layer level="HIGHLIGHT">
                 <Texture parentKey="highlight" atlas="search-highlight" setAllPoints="true">
+
+                </Texture>
+            </Layer>
+            <Layer level="BORDER">
+                <Texture parentKey="ring" atlas="charactercreate-ring-metallight" hidden="true">
 
                 </Texture>
             </Layer>
@@ -57,15 +120,13 @@
 					</Anchors>
 				</Texture>
 				<Texture parentKey="icon">
-					<Size x="32" y="32"/>				
 					<Anchors>
 						<Anchor point="LEFT" x="5" y="0"/>
 					</Anchors>
 				</Texture>
                 <MaskTexture parentKey="mask" file="Interface/CHARACTERFRAME/TempPortraitAlphaMask" hWrapMode="CLAMPTOBLACKADDITIVE" vWrapMode="CLAMPTOBLACKADDITIVE" hidden="true">
-                    <Size x="30" y="30"/>	
                     <Anchors>
-                        <Anchor point="LEFT" x="5" y="0"/>
+                        <Anchor point="LEFT" x="0" y="0"/>
                     </Anchors>
                     <MaskedTextures>
                         <MaskedTexture childKey="icon"/>

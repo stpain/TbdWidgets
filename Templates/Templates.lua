@@ -39,6 +39,9 @@ function TBDSimpleIconLabelFrameMixin:SetDataBinding(binding, height)
     else
         self.background:SetAlpha(0)
     end
+    if binding.highlightAtlas then
+        self.highlight:SetAtlas(binding.highlightAtlas)
+    end
     if binding.backgroundAtlas then
         self.background:SetAtlas(binding.backgroundAtlas)
         self.background:SetAlpha(1)
@@ -94,17 +97,26 @@ function TBDSimpleIconLabelFrameMixin:SetDataBinding(binding, height)
         self.icon:SetSize(binding.iconSize[1], binding.iconSize[2])
     end
     if binding.iconSizeRight then
-        self.icon:SetSize(binding.iconSizeRight[1], binding.iconSizeRight[2])
+        self.iconRight:SetSize(binding.iconSizeRight[1], binding.iconSizeRight[2])
     end
 
     if binding.showMask then
         self.mask:Show()
         local x, y = self.icon:GetSize()
-        self.icon:SetSize(x + 6, y + 6)
+        --self.icon:SetSize(x*1.2, y*1.2)
+        self.mask:SetSize(x*1.1, y*1.1)
         self.icon:ClearAllPoints()
         self.icon:SetPoint("LEFT", 3, 0)
+        self.mask:ClearAllPoints()
+        self.mask:SetPoint("LEFT", 0, 0)
+
+        self.ring:ClearAllPoints()
+        self.ring:SetPoint("CENTER", self.icon, "CENTER")
+        self.ring:SetSize(x*1.8, y*1.8)
+        self.ring:Show()
     else
         self.mask:Hide()
+        self.ring:Hide()
     end
 
     if binding.showMaskRight then
@@ -149,6 +161,10 @@ function TBDSimpleIconLabelFrameMixin:SetDataBinding(binding, height)
         self:SetScript("OnLeave", function()
             GameTooltip_SetDefaultAnchor(GameTooltip, UIParent)
         end)
+    end
+
+    if binding.init then
+        binding.init(self)
     end
 
     --self.anim:Play()
@@ -199,5 +215,29 @@ function TBDBaseTooltipMixin:OnEnter()
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
         GameTooltip:SetText(self.tooltipText, 1, 1, 1, 1, true)
         GameTooltip:Show()
+    end
+end
+
+
+
+
+TBDCircleButtonMixin = {}
+function TBDCircleButtonMixin:OnLoad()
+    self.isSelected = false;
+end
+function TBDCircleButtonMixin:Init(config)
+    if config.icon then
+        self.icon:SetTexture(config.icon)
+    end
+    if config.atlas then
+        self.icon:SetAtlas(config.atlas)
+    end
+    if config.label then
+        self.label:SetText(config.label)
+    end
+    if config.onClick then
+        self:SetScript("OnClick", function()
+            config.onClick(self)
+        end)
     end
 end

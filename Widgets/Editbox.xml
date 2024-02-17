@@ -1,0 +1,39 @@
+<Ui>
+    <EditBox name="TBDInputBoxTemplate" mixin="TBDInputBoxMixin" inherits="InputBoxTemplate" autoFocus="false" virtual="true">
+        <Size x="160" y="24"/>
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString parentKey="label" inherits="GameFontNormal">
+                    <Color r="0.5" g="0.5" b="0.5"/>
+                    <Anchors>
+                        <Anchor point="LEFT" x="6" y="0"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Frames>
+            <Button parentKey="ok" hidden="true" frameStrata="HIGH" frameLevel="6">
+                <Size x="16" y="16"/>
+                <Anchors>
+                    <Anchor point="RIGHT" x="-20" y="0"/>
+                </Anchors>
+                <NormalTexture atlas="common-icon-checkmark"/>
+                <PushedTexture atlas="common-icon-checkmark"/>
+                <HighlightTexture atlas="ClickCast-Highlight-Binding"/>
+            </Button>
+            <Button parentKey="cancel" hidden="true" frameStrata="HIGH" frameLevel="6">
+                <Size x="16" y="16"/>
+                <Anchors>
+                    <Anchor point="RIGHT" x="-4" y="0"/>
+                </Anchors>
+                <NormalTexture atlas="common-icon-redx"/>
+                <PushedTexture atlas="common-icon-redx"/>
+                <HighlightTexture atlas="ClickCast-Highlight-Binding"/>
+            </Button>
+        </Frames>
+        <Scripts>
+			<OnLoad method="OnLoad"/>
+			<OnTextChanged method="OnTextChanged"/>
+		</Scripts>
+    </EditBox>
+</Ui>

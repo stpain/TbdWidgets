@@ -1,5 +1,5 @@
 ## Name: TBD-Widgets
-## Version: 0.3
+## Version: 0.4
 ## Interface: 100200
 ## Notes: UI templates for use in TBD addons
 ## SavedVariables: TbdAccount
@@ -18,6 +18,8 @@ Widgets\Helptips.lua
 Widgets\Helptips.xml
 Widgets\TabFrame.lua
 Widgets\TabFrame.xml
+Widgets\Editbox.lua
+Widgets\Editbox.xml
 
 Templates\Templates.lua
 Templates\Templates.xml
