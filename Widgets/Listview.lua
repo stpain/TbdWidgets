@@ -122,7 +122,7 @@ TBDTreeviewMixin = {}
 
 function TBDTreeviewMixin:OnLoad()
 
-    self.DataProvider = CreateDataProvider();
+    self.DataProvider = CreateTreeDataProvider();
     local indent = 10;
 	local padLeft = 0;
 	local pad = 5;
@@ -134,10 +134,11 @@ function TBDTreeviewMixin:OnLoad()
     local height = self.elementHeight;
     self.scrollView:SetElementExtent(height);
 
+    --self.scrollView:SetElementInitializer("UIPanelButtonTemplate", GenerateClosure(self.OnElementInitialize, self));
     self.scrollView:SetElementInitializer(self.itemTemplate, GenerateClosure(self.OnElementInitialize, self));
     self.scrollView:SetElementResetter(GenerateClosure(self.OnElementReset, self));
 
-    self.selectionBehavior = ScrollUtil.AddSelectionBehavior(self.scrollView);
+    --self.selectionBehavior = ScrollUtil.AddSelectionBehavior(self.scrollView);
 
     self.scrollView:SetPadding(1, 1, 1, 1, 1);
 
@@ -156,26 +157,33 @@ function TBDTreeviewMixin:OnLoad()
 
 end
 
-function TBDTreeviewMixin:OnElementInitialize(element, elementData, isNew)
-    if isNew then
-        element:OnLoad();
-    end
-    local height = self.elementHeight;
-    element:SetDataBinding(elementData, height);
-    element:Show()
+function TBDTreeviewMixin:OnElementInitialize(button, node)
 
-    if self.enableSelection then
-        if element.selected then
-            element:HookScript("OnMouseDown", function()
-                self.scrollView:ForEachFrame(function(f, d)
-                    f.selected:Hide()
-                end)
-                element.selected:Show()
-            end)
+    -- local data = node:GetData()
+    -- local text = data.ButtonText
+    -- button:SetText(text)
+    button:SetScript("OnMouseDown", function()
+        node:ToggleCollapsed()
+
+        if node:GetData().isParent then
+            if node:IsCollapsed() then
+                button.icon:SetTexCoord(0,1,0,1)
+            else
+                --button.icon:SetTexCoord(1,0, 0,0, 1,1, 0,1)
+                button.icon:SetTexCoord(0,1, 1,1, 0,0, 1,0)
+            end
         end
+    end)
+
+    local height = self.elementHeight;
+    if button.SetDataBinding then
+        button:SetDataBinding(node:GetData(), height);
+        button:Show()
     end
 end
 
-function TBDTreeviewMixin:OnElementReset(element)
-    element:ResetDataBinding()
+function TBDTreeviewMixin:OnElementReset(button)
+    if button.ResetDataBinding then
+        button:ResetDataBinding()
+    end
 end

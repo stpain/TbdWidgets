@@ -20,6 +20,11 @@ function TBDSimpleIconLabelFrameMixin:SetDataBinding(binding, height)
             self.rightButton:SetSize(height - 4, height - 4)
         end
 
+        if binding.rightButton.offsetY then
+            self.rightButton:ClearAllPoints()
+            self.rightButton:SetPoint("RIGHT", binding.rightButton.offsetY, 0)
+        end
+
         if binding.rightButton.atlas then
             self.rightButton.icon:SetAtlas(binding.rightButton.atlas)
         end
@@ -44,7 +49,11 @@ function TBDSimpleIconLabelFrameMixin:SetDataBinding(binding, height)
     end
     if binding.backgroundAtlas then
         self.background:SetAtlas(binding.backgroundAtlas)
-        self.background:SetAlpha(1)
+        if binding.backgroundAlpha then
+            self.background:SetAlpha(binding.backgroundAlpha)
+        else
+            self.background:SetAlpha(1)
+        end
     else
         if binding.backgroundRGB then
             self.background:SetColorTexture(binding.backgroundRGB.r, binding.backgroundRGB.g, binding.backgroundRGB.b)
@@ -101,21 +110,37 @@ function TBDSimpleIconLabelFrameMixin:SetDataBinding(binding, height)
     end
 
     if binding.showMask then
-        self.mask:Show()
         local x, y = self.icon:GetSize()
-        --self.icon:SetSize(x*1.2, y*1.2)
-        self.mask:SetSize(x*1.1, y*1.1)
-        self.icon:ClearAllPoints()
-        self.icon:SetPoint("LEFT", 3, 0)
-        self.mask:ClearAllPoints()
-        self.mask:SetPoint("LEFT", 0, 0)
 
-        self.ring:ClearAllPoints()
-        self.ring:SetPoint("CENTER", self.icon, "CENTER")
-        self.ring:SetSize(x*1.8, y*1.8)
-        self.ring:Show()
+        if binding.showMask == "circle" then
+            self.circleMask:Show()
+            self.circleMask:SetSize(x, y)
+            self.ring:SetSize(x*1.8, y*1.8)
+            self.ring:Show()
+
+        elseif binding.showMask == "square" then
+
+            if WOW_PROJECT_ID == WOW_PROJECT_WRATH_CLASSIC then
+                
+            elseif WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
+                self.squareMask:SetAtlas("UI-HUD-ActionBar-IconFrame-Mask")
+            end
+
+            self.squareMask:Show()
+            self.squareMask:SetSize(x, y)
+            self.ring:Hide()
+        else
+
+            --keeping this for compatability with older version passsing a bool value
+            self.circleMask:Show()
+            self.circleMask:SetSize(x, y)
+            self.ring:SetSize(x*1.8, y*1.8)
+            self.ring:Show()
+        end
+
     else
-        self.mask:Hide()
+        self.circleMask:Hide()
+        self.squareMask:Hide()
         self.ring:Hide()
     end
 
@@ -167,6 +192,10 @@ function TBDSimpleIconLabelFrameMixin:SetDataBinding(binding, height)
         binding.init(self)
     end
 
+    if binding.resetFunc then
+        self.resetFunc = binding.resetFunc;
+    end
+
     --self.anim:Play()
 end
 function TBDSimpleIconLabelFrameMixin:ResetDataBinding()
@@ -180,6 +209,11 @@ function TBDSimpleIconLabelFrameMixin:ResetDataBinding()
     self.labelRight:SetText("")
     self.rightButton:SetScript("OnClick", nil)
     self.rightButton:Hide()
+
+    if self.resetFunc then
+        self.resetFunc(self)
+        self.resetFunc = nil
+    end
 end
 
 

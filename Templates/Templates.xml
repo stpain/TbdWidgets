@@ -103,15 +103,12 @@
 
                 </Texture>
             </Layer>
-            <Layer level="BORDER">
-                <Texture parentKey="ring" atlas="charactercreate-ring-metallight" hidden="true">
-
-                </Texture>
-            </Layer>
             <Layer level="BACKGROUND">
                 <Texture parentKey="selected" atlas="search-select" hidden="true" setAllPoints="true">
 
                 </Texture>
+            </Layer>
+            <Layer level="BACKGROUND" textureSubLevel="-1">
 				<Texture parentKey="background" alpha="0.0">	
                     <Color r="0" g="0" b="0"/>			
 					<Anchors>
@@ -119,14 +116,24 @@
 						<Anchor point="BOTTOMRIGHT" x="0" y="1"/>
 					</Anchors>
 				</Texture>
+            </Layer>
+            <Layer level="ARTWORK">
 				<Texture parentKey="icon">
 					<Anchors>
 						<Anchor point="LEFT" x="5" y="0"/>
 					</Anchors>
 				</Texture>
-                <MaskTexture parentKey="mask" file="Interface/CHARACTERFRAME/TempPortraitAlphaMask" hWrapMode="CLAMPTOBLACKADDITIVE" vWrapMode="CLAMPTOBLACKADDITIVE" hidden="true">
+                <MaskTexture parentKey="circleMask" file="Interface/CHARACTERFRAME/TempPortraitAlphaMask" hWrapMode="CLAMPTOBLACKADDITIVE" vWrapMode="CLAMPTOBLACKADDITIVE" hidden="true">
                     <Anchors>
-                        <Anchor point="LEFT" x="0" y="0"/>
+                        <Anchor point="CENTER" relativeKey="$parent.icon" x="0" y="0"/>
+                    </Anchors>
+                    <MaskedTextures>
+                        <MaskedTexture childKey="icon"/>
+                    </MaskedTextures>
+                </MaskTexture>
+                <MaskTexture parentKey="squareMask" hWrapMode="CLAMPTOBLACKADDITIVE" vWrapMode="CLAMPTOBLACKADDITIVE" hidden="true">
+                    <Anchors>
+                        <Anchor point="CENTER" relativeKey="$parent.icon" x="0" y="0"/>
                     </Anchors>
                     <MaskedTextures>
                         <MaskedTexture childKey="icon"/>
@@ -147,6 +154,8 @@
                         <MaskedTexture childKey="iconRight"/>
                     </MaskedTextures>
                 </MaskTexture>
+            </Layer>
+            <Layer level="OVERLAY">
                 <FontString parentKey="label" inherits="GameFontWhite" justifyH="LEFT">
                     <Anchors>
                         <Anchor point="LEFT" relativePoint="RIGHT" relativeKey="$parent.icon" x="6" y="0"/>
@@ -157,6 +166,13 @@
                         <Anchor point="RIGHT" x="-1" y="0"/>
                     </Anchors>
                 </FontString>
+            </Layer>
+            <Layer level="BORDER">
+                <Texture parentKey="ring" atlas="charactercreate-ring-metallight" hidden="true">
+                    <Anchors>
+                        <Anchor point="CENTER" relativeKey="$parent.icon" x="0" y="0"/>
+                    </Anchors>
+                </Texture>
             </Layer>
         </Layers>
         <Frames>

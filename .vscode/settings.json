@@ -12,6 +12,7 @@
         "CreateScrollBoxListTreeListView",
         "CreateAnchor",
         "CreateRadioButtonGroup",
-        "ButtonGroupBaseMixin"
+        "ButtonGroupBaseMixin",
+        "CreateTreeDataProvider"
     ]
 }
