@@ -19,7 +19,7 @@
                 </Anchors>
                 <NormalTexture atlas="common-icon-checkmark"/>
                 <PushedTexture atlas="common-icon-checkmark"/>
-                <HighlightTexture atlas="ClickCast-Highlight-Binding"/>
+                <HighlightTexture atlas="communities-create-avatar-border-hover"/>
             </Button>
             <Button parentKey="cancel" hidden="true" frameStrata="HIGH" frameLevel="6">
                 <Size x="16" y="16"/>
@@ -28,7 +28,7 @@
                 </Anchors>
                 <NormalTexture atlas="common-icon-redx"/>
                 <PushedTexture atlas="common-icon-redx"/>
-                <HighlightTexture atlas="ClickCast-Highlight-Binding"/>
+                <HighlightTexture atlas="communities-create-avatar-border-hover"/>
             </Button>
         </Frames>
         <Scripts>
