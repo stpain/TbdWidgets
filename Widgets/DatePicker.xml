@@ -1,0 +1,76 @@
+<Ui>
+
+    <Frame name="TBDDatePickerGridviewItemTemplate" mixin="TBDDatePickerGridviewItemMixin" virtual="true">
+        <Layers>
+            <Layer level="HIGHLIGHT">
+                <Texture atlas="Forge-ColorSwatchHighlight"/>
+            </Layer>
+            <Layer level="OVERLAY">
+                <FontString parentKey="text" inherits="GameFontNormal">
+                    <Color r="1" g="1" b="1"/>
+                    <Anchors>
+                        <Anchor point="CENTER" x="0" y="0"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+    </Frame>
+
+    <Frame name="TBDDatePicker" mixin="TBDDatePickerMixin" virtual="true">
+
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture>
+                    <Color r="0.085" g="0.09" b="0.075" a="1"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="0" y="0"/>
+                        <Anchor point="BOTTOMRIGHT" x="0" y="0"/>
+                    </Anchors>
+                </Texture>
+            </Layer>
+            <Layer level="OVERLAY">
+                <FontString parentKey="text" inherits="GameFontNormal">
+                    <!-- <Color r="1" g="1" b="1"/> -->
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="0" y="-24"/>
+                        <Anchor point="TOPRIGHT" x="0" y="-24"/>
+                    </Anchors>
+                    <Size y="22"/>
+                </FontString>
+            </Layer>
+        </Layers>
+
+        <Frames>
+
+            <Button parentKey="selector" inherits="UIPanelButtonTemplate">
+                <Size x="60" y="24"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="0" y="0"/>
+                </Anchors>
+            </Button>
+
+            <ScrollFrame parentKey="gridview" inherits="TBDGridviewTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="0" y="-46"/>
+                    <Anchor point="BOTTOMRIGHT" x="0" y="0"/>
+                </Anchors>
+            </ScrollFrame>
+            
+            <Button parentKey="close" inherits="UIPanelCloseButton">
+                <Anchors>
+                    <Anchor point="TOPRIGHT" x="6" y="6"/>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        HideUIPanel(self:GetParent())
+                    </OnClick>
+                </Scripts>
+            </Button>
+        </Frames>
+
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+            <OnHide method="OnHide"/>
+        </Scripts>
+    </Frame>
+</Ui>
