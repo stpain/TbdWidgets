@@ -1,7 +1,6 @@
 ## Name: TBD-Widgets
-## Version: 0.7
-## Interface-Cata: 40400
-## Interface: 100200
+## Version: 0.8
+## Interface: 100200, 40400, 11503
 ## Notes: UI templates for use in TBD addons
 ## SavedVariables: TbdAccount
 
@@ -23,6 +22,8 @@ Widgets\Editbox.lua
 Widgets\Editbox.xml
 Widgets\DatePicker.lua
 Widgets\DatePicker.xml
+Widgets\StatusDial.lua
+Widgets\StatusDial.xml
 
 Templates\Templates.lua
 Templates\Templates.xml
