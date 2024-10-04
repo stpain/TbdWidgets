@@ -24,15 +24,15 @@ function TbdWidgetsStatusMixin:SetValue(cur, max, animate)
         return 
     end
     local i = 0
-    local percent = (cur/max) * 100
+    local percent = (cur/max)
 
     if animate then
 
-        local step = percent / 33
-        local ticker = C_Timer.NewTicker(0.001, function()
-            CooldownFrame_SetDisplayAsPercentage(self.cooldown, i / 100)
+        local step = percent / 25
+        local ticker = C_Timer.NewTicker(0.01, function()
+            CooldownFrame_SetDisplayAsPercentage(self.cooldown, i)
             i = i + (step)
-        end, 33)
+        end, 25)
 
     else
         CooldownFrame_SetDisplayAsPercentage(self.cooldown, percent)
@@ -49,6 +49,6 @@ function TbdWidgetsStatusMixin:SetIcon(icon)
     end
 end
 
-function TbdWidgetsStatusMixin:SetColor(r, g, b)
+function TbdWidgetsStatusMixin:SetColour(r, g, b)
     self.cooldown:SetSwipeColor(r, g, b, 1)
 end

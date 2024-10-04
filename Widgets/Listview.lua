@@ -165,19 +165,27 @@ function TBDTreeviewMixin:OnElementInitialize(button, node)
     button:SetScript("OnMouseDown", function()
         node:ToggleCollapsed()
 
-        if node:GetData().isParent then
-            if node:IsCollapsed() then
-                button.icon:SetTexCoord(0,1,0,1)
-            else
-                --button.icon:SetTexCoord(1,0, 0,0, 1,1, 0,1)
-                button.icon:SetTexCoord(0,1, 1,1, 0,0, 1,0)
-            end
-        end
+        -- if node:GetData().isParent then
+        --     if node:IsCollapsed() then
+        --         button.icon:SetTexCoord(0,1,0,1)
+        --     else
+        --         --button.icon:SetTexCoord(1,0, 0,0, 1,1, 0,1)
+        --         button.icon:SetTexCoord(0,1, 1,1, 0,0, 1,0)
+        --     end
+        -- end
     end)
 
+
+    --[[
+        changed to pass the node instead, any SetDataBinding functions will need to use
+        local binding = node:GetData()
+        to access the binding table data
+
+        update, moving node to end and keeping the original args
+    ]]
     local height = self.elementHeight;
     if button.SetDataBinding then
-        button:SetDataBinding(node:GetData(), height);
+        button:SetDataBinding(node:GetData(), height, node);
         button:Show()
     end
 end
@@ -185,5 +193,67 @@ end
 function TBDTreeviewMixin:OnElementReset(button)
     if button.ResetDataBinding then
         button:ResetDataBinding()
+    end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TBDNoTemplateTreeviewMixin = {}
+
+
+function TBDNoTemplateTreeviewMixin:OnLoad()
+
+    self.DataProvider = CreateTreeDataProvider();
+    local indent = 10;
+	local padLeft = 0;
+	local pad = 5;
+	local spacing = 1;
+    self.scrollView = CreateScrollBoxListTreeListView(indent, pad, pad, padLeft, pad, spacing)
+    self.scrollView:SetDataProvider(self.DataProvider);
+
+    self.scrollView:SetElementFactory(function(factory, elementData)
+        local data = elementData:GetData()
+		factory(data.template, data.initializer);
+	end);
+
+    self.scrollView:SetElementExtentCalculator(function(_, elementData)
+        return elementData:GetData().height or 20
+    end)
+
+    self.scrollView:SetElementResetter(GenerateClosure(self.OnElementReset, self));
+
+    self.selectionBehavior = ScrollUtil.AddSelectionBehavior(self.scrollView);
+
+    self.scrollView:SetPadding(1, 1, 1, 1, 1);
+
+    ScrollUtil.InitScrollBoxListWithScrollBar(self.scrollBox, self.scrollBar, self.scrollView);
+    --ScrollUtil.InitScrollBoxWithScrollBar(scrollBox, scrollBar, scrollBoxView)
+
+    local anchorsWithBar = {
+        CreateAnchor("TOPLEFT", self, "TOPLEFT", 1, -1),
+        CreateAnchor("BOTTOMRIGHT", self.scrollBar, "BOTTOMLEFT", -5, 1),
+    };
+    local anchorsWithoutBar = {
+        CreateAnchor("TOPLEFT", self, "TOPLEFT", 1, -1),
+        CreateAnchor("BOTTOMRIGHT", self, "BOTTOMRIGHT", -1, 1),
+    };
+    ScrollUtil.AddManagedScrollBarVisibilityBehavior(self.scrollBox, self.scrollBar, anchorsWithBar, anchorsWithoutBar);
+
+end
+
+function TBDNoTemplateTreeviewMixin:OnElementReset(element)
+    if element.ResetDataBinding then
+        element:ResetDataBinding()
     end
 end

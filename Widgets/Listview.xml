@@ -43,4 +43,19 @@
             <OnLoad method="OnLoad"/>
         </Scripts>
     </Frame>
+
+    <Frame name="TBDNoTemplateTreeviewTemplate" mixin="TBDNoTemplateTreeviewMixin" virtual="true">
+        <Frames>
+            <Frame parentKey="scrollBox" inherits="WowScrollBoxList"/>
+            <EventFrame parentKey="scrollBar" inherits="MinimalScrollBar">
+                <Anchors>
+                    <Anchor point="TOPRIGHT" x="-8" y="-4"/>
+                    <Anchor point="BOTTOMRIGHT" x="-8" y="4"/>
+                </Anchors>
+            </EventFrame>
+        </Frames>
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+        </Scripts>
+    </Frame>
 </Ui>
