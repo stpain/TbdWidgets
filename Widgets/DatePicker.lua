@@ -40,11 +40,60 @@ function TBDDatePickerMixin:OnLoad()
     self.year = now.year;
     self.month = now.month;
     self.day = now.day;
+    self.hour = now.day;
+    self.min = now.min;
 
     self.gridview:InitFramePool("FRAME", "TBDDatePickerGridviewItemTemplate")
     self.gridview:SetFixedColumnCount(4)
     self.gridview.ScrollBar:Hide()
 
+    self.hourInput:SetText(self.hour)
+    self.minuteInput:SetText(self.min)
+
+    self.hourInput:SetFrameLevel(self:GetFrameLevel() + 10)
+    self.minuteInput:SetFrameLevel(self:GetFrameLevel() + 10)
+
+    self.hourInput:SetScript("OnMouseWheel", function(_, delta)
+        local currentHour = tonumber(self.hourInput:GetText())
+        if currentHour then
+            currentHour = currentHour + delta
+            if currentHour < 0 then
+                currentHour = 0
+            end
+            if currentHour > 23 then
+                currentHour = 23
+            end
+            self.hourInput:SetText(currentHour)
+        end
+    end)
+
+    self.minuteInput:SetScript("OnMouseWheel", function(_, delta)
+        local currentMinute = tonumber(self.minuteInput:GetText())
+        if currentMinute then
+            currentMinute = currentMinute + delta
+            if currentMinute < 0 then
+                currentMinute = 0
+            end
+            if currentMinute > 59 then
+                currentMinute = 59
+            end
+            self.minuteInput:SetText(currentMinute)
+        end
+    end)
+
+    self.hourInput:SetScript("OnTextChanged", function()
+        if tonumber(self.hourInput:GetText()) then
+            self.hour = tonumber(self.hourInput:GetText())
+            self:OnDateChange()
+        end
+    end)
+
+    self.minuteInput:SetScript("OnTextChanged", function()
+        if tonumber(self.minuteInput:GetText()) then
+            self.min = tonumber(self.minuteInput:GetText())
+            self:OnDateChange()
+        end
+    end)
 
     self:LoadGridview("day")
     self:OnDateChange()
@@ -93,18 +142,20 @@ function TBDDatePickerMixin:SetCallback(callback)
     self.callback = callback;
 end
 
-function TBDDatePickerMixin:OnDateChange()
+function TBDDatePickerMixin:OnDateChange(fireCallback)
     local today = date('*t')
     today.day = self.day
     today.month = self.month
     today.year = self.year
+    today.hour = self.hour
+    today.min = self.min
     self.datetime = time(today)
 
-    if self.callback then
+    if fireCallback and self.callback then
         self.callback(self.datetime)
     end
 
-    self.text:SetText(date("%Y-%m-%d", self.datetime))
+    self.text:SetText(date("%Y-%m-%d   %H:%M", self.datetime))
 end
 
 function TBDDatePickerMixin:LoadGridview(tier)
@@ -125,7 +176,7 @@ function TBDDatePickerMixin:LoadGridview(tier)
                 text = i,
                 onMouseDown = function(f)
                     self.day = i
-                    self:OnDateChange()
+                    self:OnDateChange(true)
                     self:Hide()
                 end,
             })

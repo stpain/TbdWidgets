@@ -17,7 +17,7 @@
     </Frame>
 
     <Frame name="TBDDatePicker" mixin="TBDDatePickerMixin" virtual="true">
-
+        <Size x="160" y="186"/>
         <Layers>
             <Layer level="BACKGROUND">
                 <Texture>
@@ -66,6 +66,37 @@
                     </OnClick>
                 </Scripts>
             </Button>
+
+            <EditBox parentKey="hourInput" inherits="InputBoxTemplate" numeric="true" autoFocus="false" enableMouse="true">
+                <Size x="40" y="22"/>
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" x="60" y="0"/>
+                </Anchors>
+                <Layers>
+                    <Layer level="OVERLAY">
+                        <FontString inherits="GameFontNormalLarge" text=":">
+                            <Color r="1" g="1" b="1"/>
+                            <Anchors>
+                                <Anchor point="LEFT" relativePoint="RIGHT" x="2" y=""/>
+                            </Anchors>
+                        </FontString>
+                        <FontString inherits="GameFontNormal" text="Time">
+
+                            <Anchors>
+                                <Anchor point="RIGHT" relativePoint="LEFT" x="-10" y=""/>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </EditBox>
+
+            <EditBox parentKey="minuteInput" inherits="InputBoxTemplate" numeric="true" autoFocus="false" enableMouse="true">
+                <Size x="40" y="22"/>
+                <Anchors>
+                    <Anchor point="LEFT" relativeKey="$parent.hourInput" relativePoint="RIGHT" x="16" y="0"/>
+                </Anchors>
+            </EditBox>
+
         </Frames>
 
         <Scripts>
