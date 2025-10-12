@@ -6,7 +6,6 @@ function TBDListviewMixin:OnLoad()
 
     self.DataProvider = CreateDataProvider();
     self.scrollView = CreateScrollBoxListLinearView();
-    self.scrollView:SetDataProvider(self.DataProvider);
 
     ---height is defined in the xml keyValues
     local height = self.elementHeight;
@@ -14,6 +13,8 @@ function TBDListviewMixin:OnLoad()
 
     self.scrollView:SetElementInitializer(self.itemTemplate, GenerateClosure(self.OnElementInitialize, self));
     self.scrollView:SetElementResetter(GenerateClosure(self.OnElementReset, self));
+
+    self.scrollView:SetDataProvider(self.DataProvider);
 
     self.selectionBehavior = ScrollUtil.AddSelectionBehavior(self.scrollView);
 
@@ -73,7 +74,6 @@ function TBDNoTemplateListviewMixin:OnLoad()
 
     self.DataProvider = CreateDataProvider();
     self.scrollView = CreateScrollBoxListLinearView();
-    self.scrollView:SetDataProvider(self.DataProvider);
 
     self.scrollView:SetElementFactory(function(factory, elementData)
 		factory(elementData.template, elementData.initializer);
@@ -83,6 +83,8 @@ function TBDNoTemplateListviewMixin:OnLoad()
     end)
 
     self.scrollView:SetElementResetter(GenerateClosure(self.OnElementReset, self));
+
+    self.scrollView:SetDataProvider(self.DataProvider);
 
     self.selectionBehavior = ScrollUtil.AddSelectionBehavior(self.scrollView);
 
@@ -128,7 +130,6 @@ function TBDTreeviewMixin:OnLoad()
 	local pad = 5;
 	local spacing = 1;
     self.scrollView = CreateScrollBoxListTreeListView(indent, pad, pad, padLeft, pad, spacing)
-    self.scrollView:SetDataProvider(self.DataProvider);
 
     ---height is defined in the xml keyValues
     local height = self.elementHeight;
@@ -137,6 +138,8 @@ function TBDTreeviewMixin:OnLoad()
     --self.scrollView:SetElementInitializer("UIPanelButtonTemplate", GenerateClosure(self.OnElementInitialize, self));
     self.scrollView:SetElementInitializer(self.itemTemplate, GenerateClosure(self.OnElementInitialize, self));
     self.scrollView:SetElementResetter(GenerateClosure(self.OnElementReset, self));
+
+    self.scrollView:SetDataProvider(self.DataProvider);
 
     --self.selectionBehavior = ScrollUtil.AddSelectionBehavior(self.scrollView);
 
@@ -220,7 +223,6 @@ function TBDNoTemplateTreeviewMixin:OnLoad()
 	local pad = 5;
 	local spacing = 1;
     self.scrollView = CreateScrollBoxListTreeListView(indent, pad, pad, padLeft, pad, spacing)
-    self.scrollView:SetDataProvider(self.DataProvider);
 
     self.scrollView:SetElementFactory(function(factory, elementData)
         local data = elementData:GetData()
@@ -232,6 +234,8 @@ function TBDNoTemplateTreeviewMixin:OnLoad()
     end)
 
     self.scrollView:SetElementResetter(GenerateClosure(self.OnElementReset, self));
+
+    self.scrollView:SetDataProvider(self.DataProvider);
 
     self.selectionBehavior = ScrollUtil.AddSelectionBehavior(self.scrollView);
 
