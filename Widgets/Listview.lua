@@ -121,7 +121,6 @@ end
 
 
 TBDTreeviewMixin = {}
-
 function TBDTreeviewMixin:OnLoad()
 
     self.DataProvider = CreateTreeDataProvider();
@@ -135,18 +134,14 @@ function TBDTreeviewMixin:OnLoad()
     local height = self.elementHeight;
     self.scrollView:SetElementExtent(height);
 
-    --self.scrollView:SetElementInitializer("UIPanelButtonTemplate", GenerateClosure(self.OnElementInitialize, self));
     self.scrollView:SetElementInitializer(self.itemTemplate, GenerateClosure(self.OnElementInitialize, self));
     self.scrollView:SetElementResetter(GenerateClosure(self.OnElementReset, self));
 
     self.scrollView:SetDataProvider(self.DataProvider);
 
-    --self.selectionBehavior = ScrollUtil.AddSelectionBehavior(self.scrollView);
-
     self.scrollView:SetPadding(1, 1, 1, 1, 1);
 
     ScrollUtil.InitScrollBoxListWithScrollBar(self.scrollBox, self.scrollBar, self.scrollView);
-    --ScrollUtil.InitScrollBoxWithScrollBar(scrollBox, scrollBar, scrollBoxView)
 
     local anchorsWithBar = {
         CreateAnchor("TOPLEFT", self, "TOPLEFT", 1, -1),
@@ -157,7 +152,6 @@ function TBDTreeviewMixin:OnLoad()
         CreateAnchor("BOTTOMRIGHT", self, "BOTTOMRIGHT", -1, 1),
     };
     ScrollUtil.AddManagedScrollBarVisibilityBehavior(self.scrollBox, self.scrollBar, anchorsWithBar, anchorsWithoutBar);
-
 end
 
 function TBDTreeviewMixin:OnElementInitialize(button, node)

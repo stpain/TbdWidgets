@@ -1,0 +1,15 @@
+<Ui>
+    <Frame name="TBDOptionsPanel" mixin="TBDOptionsPanelMixin">
+        <Frames>
+            <Frame parentKey="TreeViewMenu" inherits="">
+
+            </Frame>
+            <Frame parentKey="Container">
+                
+            </Frame>
+        </Frames>
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+        </Scripts>
+    </Frame>
+</Ui>

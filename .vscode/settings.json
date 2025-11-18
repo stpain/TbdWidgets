@@ -14,7 +14,12 @@
         "CreateRadioButtonGroup",
         "ButtonGroupBaseMixin",
         "CreateTreeDataProvider",
-        "CooldownFrame_SetDisplayAsPercentage"
+        "CooldownFrame_SetDisplayAsPercentage",
+        "GameTooltip_Hide",
+        "GetAppropriateTooltip",
+        "GameTooltip_AddErrorLine",
+        "GameTooltip_AddNormalLine",
+        "GameTooltip_AddBlankLineToTooltip"
     ],
     "Lua.runtime.version": "Lua 5.1",
     "Lua.runtime.builtin": {
