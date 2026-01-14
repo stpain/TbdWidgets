@@ -3,7 +3,9 @@
 		<KeyValues>
 			<KeyValue key="isTabOnTop" value="false" type="boolean"/>
 		</KeyValues>
-		<Layers>
+		
+        
+        <!-- <Layers>
 			<Layer level="BACKGROUND">
 				<Texture parentKey="LeftActive" atlas="uiframe-activetab-left" useAtlasSize="true" parentArray="RotatedTextures">
 					<Anchors>
@@ -56,7 +58,73 @@
 					</Anchors>
 				</Texture>
 			</Layer>
+		</Layers> -->
+
+        <Layers>
+			<Layer level="BACKGROUND">
+				<Texture parentKey="Left" file="Interface\PaperDollInfoFrame\UI-Character-ActiveTab">
+					<Size>
+						<AbsDimension x="20" y="35"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.15625" top="0" bottom="0.546875"/>
+				</Texture>
+				<Texture parentKey="Middle" file="Interface\PaperDollInfoFrame\UI-Character-ActiveTab">
+					<Size>
+						<AbsDimension x="88" y="35"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeKey="$parent.Left" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.15625" right="0.84375" top="0" bottom="0.546875"/>
+				</Texture>
+				<Texture parentKey="Right" file="Interface\PaperDollInfoFrame\UI-Character-ActiveTab">
+					<Size>
+						<AbsDimension x="20" y="35"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeKey="$parent.Middle" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.84375" right="1.0" top="0" bottom="0.546875"/>
+				</Texture>
+				<Texture parentKey="LeftActive" file="Interface\PaperDollInfoFrame\UI-Character-InActiveTab">
+					<Size>
+						<AbsDimension x="20" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" x="0" y="-1"/>
+					</Anchors>
+					<TexCoords left="0" right="0.15625" top="0" bottom="1.0"/>
+				</Texture>
+				<Texture parentKey="MiddleActive" file="Interface\PaperDollInfoFrame\UI-Character-InActiveTab">
+					<Size>
+						<AbsDimension x="88" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeKey="$parent.LeftActive" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.15625" right="0.84375" top="0" bottom="1.0"/>
+				</Texture>
+				<Texture parentKey="RightActive" file="Interface\PaperDollInfoFrame\UI-Character-InActiveTab">
+					<Size>
+						<AbsDimension x="20" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeKey="$parent.MiddleActive" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.84375" right="1.0" top="0" bottom="1.0"/>
+				</Texture>
+			</Layer>
 		</Layers>
+
+
+
 		<ButtonText parentKey="Text">
 			<Size x="0" y="10"/>
 			<Anchors>

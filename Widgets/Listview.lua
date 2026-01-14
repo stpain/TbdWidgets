@@ -208,7 +208,6 @@ end
 
 TBDNoTemplateTreeviewMixin = {}
 
-
 function TBDNoTemplateTreeviewMixin:OnLoad()
 
     self.DataProvider = CreateTreeDataProvider();
@@ -236,7 +235,6 @@ function TBDNoTemplateTreeviewMixin:OnLoad()
     self.scrollView:SetPadding(1, 1, 1, 1, 1);
 
     ScrollUtil.InitScrollBoxListWithScrollBar(self.scrollBox, self.scrollBar, self.scrollView);
-    --ScrollUtil.InitScrollBoxWithScrollBar(scrollBox, scrollBar, scrollBoxView)
 
     local anchorsWithBar = {
         CreateAnchor("TOPLEFT", self, "TOPLEFT", 1, -1),

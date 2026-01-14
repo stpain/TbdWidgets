@@ -126,7 +126,7 @@ function TBDGridviewMixin:GetItemSize()
     
         self.numItemsPerRow =  math.ceil(((numItemsPerRowMinWidth + numItemsPerRowMaxWidth) / 2))
 
-        self.itemSize = (width / self.numItemsPerRow)
+        self.itemSize = (width / (self.numItemsPerRow or 1))
     end
 
     --[[
