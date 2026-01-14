@@ -4,6 +4,8 @@
 ## Notes: UI templates for use in TBD addons
 ## SavedVariables: TbdAccount
 
+## X-Curse-Project-ID: 973041
+
 Widgets\Listview.lua
 Widgets\Listview.xml
 Widgets\Gridview.lua
