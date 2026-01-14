@@ -1,5 +1,5 @@
 ## Name: TBD-Widgets
-## Version: 2.1
+## Version: 2.11
 ## Interface: 110205
 ## Notes: UI templates for use in TBD addons
 ## SavedVariables: TbdAccount
