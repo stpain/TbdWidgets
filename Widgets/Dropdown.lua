@@ -12,12 +12,29 @@ local flyoutLayout = {
     Center = { atlas = "CharacterCreateDropdown-NineSlice-Center", },
 }
 
+local tbcFlyoutLayout = {
+		["TopRightCorner"] = { atlas = "Tooltip-NineSlice-CornerTopRight" },
+		["TopLeftCorner"] = { atlas = "Tooltip-NineSlice-CornerTopLeft" },
+		["BottomLeftCorner"] = { atlas = "Tooltip-NineSlice-CornerBottomLeft" },
+		["BottomRightCorner"] = { atlas = "Tooltip-NineSlice-CornerBottomRight" },
+		["TopEdge"] = { atlas = "_Tooltip-NineSlice-EdgeTop" },
+		["BottomEdge"] = { atlas = "_Tooltip-NineSlice-EdgeBottom" },
+		["LeftEdge"] = { atlas = "!Tooltip-NineSlice-EdgeLeft" },
+		["RightEdge"] = { atlas = "!Tooltip-NineSlice-EdgeRight" },
+		["Center"] = { layer = "BACKGROUND", atlas = "Tooltip-NineSlice-Center", x = -4, y = 4, x1 = 4, y1 = -4 },
+}
+
 TBDDropDownTemplateMixin = {}
 
 function TBDDropDownTemplateMixin:OnLoad()
 
     --NineSliceUtil.ApplyLayout(self.flyout, NineSliceLayouts.CharacterCreateDropdown)
-    NineSliceUtil.ApplyLayout(self.flyout, flyoutLayout)
+
+    if WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC then
+        NineSliceUtil.ApplyLayout(self.flyout, tbcFlyoutLayout)
+    else
+        NineSliceUtil.ApplyLayout(self.flyout, flyoutLayout)
+    end
 
     if not addon.dropdown then
         addon.dropdown = {}
