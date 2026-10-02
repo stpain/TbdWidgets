@@ -73,7 +73,7 @@
 							</Offset>
 						</Anchor>
 					</Anchors>
-					<TexCoords left="0" right="0.15625" top="0" bottom="0.546875"/>
+					<TexCoords left="0" right="0.15625" top="0" bottom="1.0"/>
 				</Texture>
 				<Texture parentKey="Middle" file="Interface\PaperDollInfoFrame\UI-Character-ActiveTab">
 					<Size>
@@ -82,7 +82,7 @@
 					<Anchors>
 						<Anchor point="LEFT" relativeKey="$parent.Left" relativePoint="RIGHT"/>
 					</Anchors>
-					<TexCoords left="0.15625" right="0.84375" top="0" bottom="0.546875"/>
+					<TexCoords left="0.15625" right="0.84375" top="0" bottom="1.0"/>
 				</Texture>
 				<Texture parentKey="Right" file="Interface\PaperDollInfoFrame\UI-Character-ActiveTab">
 					<Size>
@@ -91,7 +91,7 @@
 					<Anchors>
 						<Anchor point="LEFT" relativeKey="$parent.Middle" relativePoint="RIGHT"/>
 					</Anchors>
-					<TexCoords left="0.84375" right="1.0" top="0" bottom="0.546875"/>
+					<TexCoords left="0.84375" right="1.0" top="0" bottom="1.0"/>
 				</Texture>
 				<Texture parentKey="LeftActive" file="Interface\PaperDollInfoFrame\UI-Character-InActiveTab">
 					<Size>
@@ -159,7 +159,7 @@
 			<KeyValue key="maxTabWidth" value="100" type="number"/>
 			-->
 			<KeyValue key="tabTemplate" value="TabSystemButtonTemplate" type="string"/>
-			<KeyValue key="spacing" value="1" type="number"/>
+			<KeyValue key="spacing" value="20" type="number"/>
 			<KeyValue key="tabSelectSound" value="SOUNDKIT.IG_CHARACTER_INFO_TAB" type="global"/>
 		</KeyValues>
 		<Scripts>
