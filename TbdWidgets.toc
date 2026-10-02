@@ -1,5 +1,5 @@
 ## Name: TBD-Widgets
-## Version: 2.2
+## Version: 2.21
 ## Interface: 40400, 11507, 20505, 16001
 ## Notes: UI templates for use in TBD addons
 ## SavedVariables: TbdAccount
@@ -27,8 +27,8 @@ Widgets\DatePicker.xml
 Widgets\StatusDial.lua
 Widgets\StatusDial.xml
 
-Widgets\TabSystemTemplates.lua
-Widgets\TabSystemTemplates.xml
+#Widgets\TabSystemTemplates.lua
+#Widgets\TabSystemTemplates.xml
 
 Templates\Templates.lua
 Templates\Templates.xml
